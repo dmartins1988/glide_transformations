@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/glideTransformations/glideTransformations.iml" filepath="$PROJECT_DIR$/glideTransformations/glideTransformations.iml" />
       <module fileurl="file://$PROJECT_DIR$/glide_transformations.iml" filepath="$PROJECT_DIR$/glide_transformations.iml" />
     </modules>
   </component>
