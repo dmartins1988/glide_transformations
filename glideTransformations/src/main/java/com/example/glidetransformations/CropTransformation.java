@@ -6,7 +6,6 @@ import com.bumptech.glide.load.engine.Resource;
 import com.bumptech.glide.load.engine.bitmap_recycle.BitmapPool;
 import com.bumptech.glide.load.resource.bitmap.BitmapResource;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -19,20 +18,20 @@ import java.lang.annotation.RetentionPolicy;
 import java.security.MessageDigest;
 
 /**
- * Created by david.martins on 09/03/2018.
+ * Custom glide transformation to crop images in half on every sides
  */
 
 public class CropTransformation implements Transformation<Bitmap> {
 
-    @IntDef
+    @IntDef({CROP_LEFT, CROP_RIGHT, CROP_TOP, CROP_BOTTOM})
     @Retention(RetentionPolicy.SOURCE)
     public @interface CropSide {
     }
 
-    public final int CROP_LEFT = 0;
-    public final int CROP_RIGHT = 1;
-    public final int CROP_TOP = 2;
-    public final int CROP_BOTTOM = 3;
+    static final int CROP_LEFT = 0;
+    static final int CROP_RIGHT = 1;
+    static final int CROP_TOP = 2;
+    static final int CROP_BOTTOM = 3;
 
     private BitmapPool mBitmapPool;
 
@@ -44,7 +43,6 @@ public class CropTransformation implements Transformation<Bitmap> {
         mBitmapPool = Glide.get(context).getBitmapPool();
     }
 
-    @SuppressLint("SwitchIntDef")
     @NonNull
     @Override
     public Resource<Bitmap> transform(@NonNull final Context context, @NonNull final Resource<Bitmap> resource, final int outWidth, final int outHeight) {

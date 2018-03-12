@@ -19,7 +19,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.security.MessageDigest;
 
 /**
- * Created by david.martins on 09/03/2018.
+ * Crop transformation to be applied on Glide
  */
 
 public class CropTransformation implements Transformation<Bitmap> {
@@ -29,10 +29,14 @@ public class CropTransformation implements Transformation<Bitmap> {
     public @interface CropSide {
     }
 
-    public static final int CROP_LEFT = 0;
-    public static final int CROP_RIGHT = 1;
-    public static final int CROP_TOP = 2;
-    public static final int CROP_BOTTOM = 3;
+    static final int CROP_LEFT = 0;
+    static final int CROP_RIGHT = 1;
+    static final int CROP_TOP = 2;
+    static final int CROP_BOTTOM = 3;
+
+    private static final int VERSION = 1;
+    private static final String ID = "CropTransformation" + VERSION;
+    private static final byte[] ID_BYTES = ID.getBytes(CHARSET);
 
     private BitmapPool mBitmapPool;
 
@@ -72,7 +76,7 @@ public class CropTransformation implements Transformation<Bitmap> {
 
     @Override
     public void updateDiskCacheKey(@NonNull final MessageDigest messageDigest) {
-
+        messageDigest.digest(ID_BYTES);
     }
 
     /**
